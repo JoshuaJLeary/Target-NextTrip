@@ -1,22 +1,70 @@
-.App {
+.headerContainer {
+  display: block;
+}
+
+#metroImgContainer {
+  background-color: #fff;
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+.metroImg {
+  width: 225px;
+  height: 48px;
+  border: 0px;
+}
+
+#metroImgBannerContainer {
+  width: 100%;
+  background: transparent url(https://www.metrotransit.org/Images/mob_bannerbkg.png) repeat-x scroll left top;
+}
+
+.metroImgBanner {
+  width: 275px;
+  height: 22px;
+  border: 0px;
+}
+
+.inputSelectContainer {
+  margin-top: 10px;
+}
+
+.inputSelect {
+  width: 20em;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.inputStopNumberContainer {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.inputStopNumber {
+  width: 5em;
+  height: 20px;
+  margin-left: 10px;
+
+}
+
+.inputStopNumberBtn {
+  background: #0053A0;
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  border-radius: .25rem;
+  height: 24px;
+  border: .0625rem solid transparent;
+  padding: 0 10px;
+  vertical-align: middle;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.dividerLine {
+  color: #cccccc;
+  background-color: #cccccc;
+  margin-right: 10px;
+  margin-left: 10px;
 }
