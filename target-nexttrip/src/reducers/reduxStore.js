@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import nextTrip from './nextTripReducer';
+import nextTripRoute from './routeReducer';
+import nextTripProvider from './providerReducer';
 
 const store = combineReducers({
-  nextTrip,
+  nextTripRoute,
+  nextTripProvider,
 })
 
 export default store;
