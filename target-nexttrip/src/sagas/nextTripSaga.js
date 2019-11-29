@@ -38,7 +38,7 @@ function* getRouteSaga(action) {
 function* getRouteDirection(action) {
   console.log('getRouteDirectionSaga triggered:', action);
   try {
-    const routeDirectionResponse = yield call(axios.get, `http://svc.metrotransit.org/NexTrip/Directions/${action.payload.route}`);
+    const routeDirectionResponse = yield call(axios.get, `http://svc.metrotransit.org/NexTrip/Directions/${action.payload}`);
     console.log(routeDirectionResponse);
     yield put({
       type: 'FETCH_ROUTE_DIRECTION',

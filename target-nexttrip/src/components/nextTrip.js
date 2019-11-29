@@ -1,25 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Direction from './Direction';
+
 class NextTrip extends Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      selectedRoute: ''
+    })
+}
 
   componentDidMount() {
     this.props.dispatch({ type: 'GET_ROUTE' })
+    // this.props.dispatch({ type: 'GET_ROUTE_DIRECTION', payload: this.state.selectedRoute })
     // this.props.dispatch({ type: 'FETCH_PROVIDER' })
   }
 
-  
+  getRouteDirection = () => {
+    this.props.dispatch({ type: 'GET_ROUTE_DIRECTION', payload: this.state.selectedRoute })
+  }
+
+  selectRouteDirection = (event) => {
+    this.setState({
+      selectedRoute: event.target.value
+    }, () => this.getRouteDirection(this.state.selectedRoute))
+    console.log('selectedRoute:', event.target.value);
+    console.log('selectedRouteActual:', this.state.selectedRoute);
+  }
 
   render() {
-    console.log('this.props:', this.props);
     let routeOptions = this.props.state.nextTripRoute.map(( route ) => {
-      // console.log(route);
+      // console.log('route;', route );
       return (
         <option key={route.Route} value={route.Route}>
           {route.Description}
         </option>
       )
     })
+
+    const routeDirection = this.props.state.nextTripRouteDirection.map(( direction ) => {
+      console.log( 'this.props.DIRECTION:', this.props );
+      console.log( 'direction:', direction );
+      return (
+        <option key={direction.Value} value={direction.Value}>
+          {direction.Text}
+        </option>
+      )
+    })
+    console.log('routeOptions:', routeOptions);
+    console.log('routeDirection:', routeDirection);
+    console.log('this.props.again:', this.props.state.nextTripRouteDirection);
+    
     return (
       <form className='headerContainer'>
         <div className='headerContainer'>
@@ -31,40 +63,21 @@ class NextTrip extends Component {
           </div>
         </div>
         <div className='inputSelectContainer'>
-          <select className='inputSelect'>
-           {routeOptions}
+          <select className='inputSelect' onChange={this.selectRouteDirection}>
+            <option>Select Route</option>
+            {routeOptions}
           </select>            
         </div>
         <div className='inputSelectContainer'>
           <select className='inputSelect'>
-            <option>
-              'Test'
-            </option>
-            <option>
-              'Test 2'
-            </option>
-            <option>
-              'Test 3'
-            </option>
-            <option>
-              'Test 4'
-            </option>
-          </select>
+            <option>Select Direction</option>
+            {routeDirection}
+          </select>            
         </div>
+        {/* <Direction nextTripRouteDirection={this.props.state.nextTripRouteDirection}/> */}
         <div className='inputSelectContainer'>
           <select className='inputSelect'>
-            <option>
-              'Test'
-            </option>
-            <option>
-              'Test 2'
-            </option>
-            <option>
-              'Test 3'
-            </option>
-            <option>
-              'Test 4'
-            </option>
+            <option>Select Stop/Station</option>
           </select>
         </div>
         <hr className='dividerLine' />

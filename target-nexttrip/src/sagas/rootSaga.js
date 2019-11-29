@@ -3,6 +3,6 @@ import nextTripSaga from './nextTripSaga';
 
 export default function* rootSaga() {
   yield all([
-    nextTripSaga()
+    nextTripSaga(),
   ]);
 }
