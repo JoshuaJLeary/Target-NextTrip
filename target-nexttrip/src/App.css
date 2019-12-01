@@ -68,3 +68,45 @@
   margin-right: 10px;
   margin-left: 10px;
 }
+
+.nextTripStopsContainer {
+  float: left;
+  width: 92%;
+  margin: 0 4%;
+  padding: 6px 0;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  background: #fff;
+}
+
+.nextTripStopsDataRow {
+  line-height: 1.2em;
+  font-size: .9em;
+  font-weight: 600;
+  width: 100%;
+  white-space: nowrap;
+  color: #000;
+}
+
+.nextTripStopsRow1 {
+  float: left;
+  width: 13%;
+  margin: 4px 0;
+}
+
+.nextTripStopsRow2 {
+  float: left;
+  width: 72%;
+  margin: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  text-overflow: ellipsis;
+}
+
+.nextTripStopsRow3 {
+  text-align: right;
+  float: right;
+  width: 15%;
+  margin: 4px 0;
+}

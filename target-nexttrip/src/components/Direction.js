@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Direction extends Component {
+
+  handleDirectionChange = (event) => {
+    const { onChange, dispatch } = this.props;
+    onChange({ direction: event.target.value });
+    setTimeout( () => {
+      dispatch({ type: 'GET_ROUTE_STOP', payload: this.props.nextTripInput.nextTrip })
+    }, 1000);
+  }
+
   render() {
 
     let routeDirection = this.props.nextTripRouteDirection.map(( direction ) => {
@@ -15,7 +24,7 @@ class Direction extends Component {
 
     return (
       <div className='inputSelectContainer'>
-        <select className='inputSelect'>
+        <select className='inputSelect' onChange={this.handleDirectionChange}>
           <option>Select Direction</option>
           {routeDirection}
         </select>

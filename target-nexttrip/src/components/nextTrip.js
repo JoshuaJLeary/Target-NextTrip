@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Header from './Header';
+import Route from './Route';
 import Direction from './Direction';
+import StopStation from './StopStation';
 
 class NextTrip extends Component {
-  constructor(props) {
-    super(props);
-    this.state = ({
-      selectedRoute: ''
-    })
-}
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       nextTrip: {
+//         selectedRoute: '901',
+//         selectedDirection: '4',
+//       }
+//     }
+// }
 
   componentDidMount() {
     this.props.dispatch({ type: 'GET_ROUTE' })
@@ -17,69 +23,59 @@ class NextTrip extends Component {
     // this.props.dispatch({ type: 'FETCH_PROVIDER' })
   }
 
-  getRouteDirection = () => {
-    this.props.dispatch({ type: 'GET_ROUTE_DIRECTION', payload: this.state.selectedRoute })
+  // getRouteDirection = () => {
+  //   this.props.dispatch({ type: 'GET_ROUTE_DIRECTION', payload: this.state.selectedRoute })
+  // }
+
+  handleInputUpdate = (value) => {
+    const { dispatch } = this.props;
+    console.log('inputValue:', value);
+    dispatch({ type: 'HANDLE_INPUT_UPDATE', value });
   }
 
-  selectRouteDirection = (event) => {
-    this.setState({
-      selectedRoute: event.target.value
-    }, () => this.getRouteDirection(this.state.selectedRoute))
-    console.log('selectedRoute:', event.target.value);
-    console.log('selectedRouteActual:', this.state.selectedRoute);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.history.push('/stops');
   }
+
+  // selectRoute = (event) => {
+  //   this.setState({
+  //     selectedRoute: event.target.value
+  //   })
+  //   this.props.dispatch({ type: 'GET_ROUTE_DIRECTION', payload: this.props.state.nextTripInput.route })
+  // }
+
+  // getRouteStop = () => {
+  //   this.props.dispatch({ type: 'GET_ROUTE_STOP', payload: this.state.nextTrip})
+  // }
+
+  // selectRouteDirection = (event) => {
+  //   this.setState({
+  //     selectedDirection: event.target.value
+  //   }, () => this.getRouteStop(this.state.nextTrip))
+  //   console.log('selectedDirection:', event.target.value)
+  // }
 
   render() {
-    let routeOptions = this.props.state.nextTripRoute.map(( route ) => {
-      // console.log('route;', route );
-      return (
-        <option key={route.Route} value={route.Route}>
-          {route.Description}
-        </option>
-      )
-    })
-
-    const routeDirection = this.props.state.nextTripRouteDirection.map(( direction ) => {
-      console.log( 'this.props.DIRECTION:', this.props );
-      console.log( 'direction:', direction );
-      return (
-        <option key={direction.Value} value={direction.Value}>
-          {direction.Text}
-        </option>
-      )
-    })
-    console.log('routeOptions:', routeOptions);
-    console.log('routeDirection:', routeDirection);
-    console.log('this.props.again:', this.props.state.nextTripRouteDirection);
-    
+    console.log('departureState', this.props.state.nextTripRouteDeparture)
+    console.log('this.props.history', this.props.history)
     return (
-      <form className='headerContainer'>
-        <div className='headerContainer'>
-          <div id='metroImgContainer'>
-            <img src='https://www.metrotransit.org/images/mob_logo.png' className='metroImg' alt='metroTransitLogo' />
-          </div>
-          <div id='metroImgBannerContainer'>
-            <img src='https://www.metrotransit.org/images/mob_banner.png' className='metroImgBanner' alt='metroTransitBanner' />
-          </div>
-        </div>
-        <div className='inputSelectContainer'>
-          <select className='inputSelect' onChange={this.selectRouteDirection}>
-            <option>Select Route</option>
-            {routeOptions}
-          </select>            
-        </div>
-        <div className='inputSelectContainer'>
-          <select className='inputSelect'>
-            <option>Select Direction</option>
-            {routeDirection}
-          </select>            
-        </div>
-        {/* <Direction nextTripRouteDirection={this.props.state.nextTripRouteDirection}/> */}
-        <div className='inputSelectContainer'>
-          <select className='inputSelect'>
-            <option>Select Stop/Station</option>
-          </select>
-        </div>
+      <form className='headerContainer' onSubmit={this.handleSubmit}>
+        <Header />
+        <Route
+          nextTripRoute={this.props.state.nextTripRoute}
+          onChange={this.handleInputUpdate}
+        />
+        <Direction 
+          nextTripRouteDirection={this.props.state.nextTripRouteDirection}
+          nextTripInput={this.props.state.nextTripInput}
+          onChange={this.handleInputUpdate}
+        />
+        <StopStation
+          nextTripRouteStop={this.props.state.nextTripRouteStop}
+          nextTripInput={this.props.state.nextTripInput}
+          onChange={this.handleInputUpdate}
+        />
         <hr className='dividerLine' />
         <div className='inputStopNumberContainer'>
           <input className='inputStopNumber' type='text'>
@@ -89,6 +85,9 @@ class NextTrip extends Component {
           <input className='inputStopNumberBtn' type='submit' value='STOP NUMBER'>
           </input>
         </div>
+        <button onClick={this.handleSubmit} type='submit'>
+          SUBMIT
+        </button>
       </form>
     )
   }

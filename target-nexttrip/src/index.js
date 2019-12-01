@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/reduxStore';
 import logger from 'redux-logger';
@@ -15,9 +15,16 @@ import * as serviceWorker from './serviceWorker';
 
 const sagaMiddleware = createSagaMiddleware();
 
+const composeEnhancers =
+		typeof window === "object" &&
+		window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+				name: `ATTACH_${ '' }`,
+			}) : compose
+
 const store = createStore(
   reducer,
-  applyMiddleware(sagaMiddleware, logger),
+  composeEnhancers(applyMiddleware(sagaMiddleware, logger)),
 );
 
 sagaMiddleware.run(rootSaga);

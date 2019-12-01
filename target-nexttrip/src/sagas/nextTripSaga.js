@@ -3,8 +3,10 @@ import axios from 'axios';
 
 function* nextTripSaga() {
   yield takeEvery('GET_PROVIDER', getProviderSaga)
-  yield takeEvery('GET_ROUTE', getRouteSaga)
+  yield takeEvery('GET_ROUTE', getRoute)
   yield takeEvery('GET_ROUTE_DIRECTION', getRouteDirection)
+  yield takeEvery('GET_ROUTE_STOP', getRouteStop)
+  yield takeEvery('GET_ROUTE_DEPARTURE', getRouteDeparture)
 }
 
 function* getProviderSaga(action) {
@@ -21,7 +23,7 @@ function* getProviderSaga(action) {
   }
 }
 
-function* getRouteSaga(action) {
+function* getRoute(action) {
   console.log('getRouteSaga triggered:', action);
   try {
     const routeResponse = yield call(axios.get, 'http://svc.metrotransit.org/NexTrip/Routes');
@@ -46,6 +48,36 @@ function* getRouteDirection(action) {
     })
   } catch(error) {
     console.log('error in getRouteDirectionSaga', error);
+  }
+}
+
+function* getRouteStop(action) {
+  console.log('getRouteStopSaga triggered:', action);
+    try {
+      console.log('route and direction2', action.payload.direction);
+      const routeStopResponse = yield call(axios.get, `http://svc.metrotransit.org/NexTrip/Stops/${action.payload.route}/${action.payload.direction}`);
+      console.log(routeStopResponse);
+      yield put({
+        type: 'FETCH_ROUTE_STOP',
+        payload: routeStopResponse.data
+      })
+    } catch(error) {
+      console.log('error in getRouteStopSaga', error);
+    }
+  
+}
+
+function* getRouteDeparture(action) {
+  console.log('getRouteDepature triggered:', action);
+  try {
+    const routeDeparture = yield call(axios.get, `http://svc.metrotransit.org/NexTrip/${action.payload.route}/${action.payload.direction}/${action.payload.stopStation}`);
+    console.log(routeDeparture);
+    yield put({
+      type: 'FETCH_ROUTE_DEPARTURE',
+      payload: routeDeparture.data
+    })
+  } catch(error) {
+    console.log('error in getRouteDepartureSaga', error);
   }
 }
 
