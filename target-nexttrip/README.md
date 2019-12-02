@@ -1,5 +1,5 @@
 # Joshua Leary Target NexTrip Application
-This application allows users to view upcoming available Metro Transit Transportaion based on route, direction, and station selections.
+This application allows users to view upcoming available Metro Transit Transportaion<br>based on route, direction, and station selections.</br>
 
 ## Installation
 
