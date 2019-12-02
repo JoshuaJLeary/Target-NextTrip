@@ -8,7 +8,7 @@ class Direction extends Component {
     onChange({ direction: event.target.value });
     setTimeout( () => {
       dispatch({ type: 'GET_ROUTE_STOP', payload: this.props.nextTripInput.nextTrip })
-    }, 1000);
+    }, 500);
   }
 
   render() {

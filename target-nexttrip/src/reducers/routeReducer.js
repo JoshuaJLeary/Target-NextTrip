@@ -1,7 +1,7 @@
 const nextTripRoute = (state = [], action) => {
   switch(action.type) {
     case 'FETCH_ROUTE':
-      return [ ...state, ...action.payload ];
+      return action.payload;
     default:
       return state;
   }

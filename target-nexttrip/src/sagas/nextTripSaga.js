@@ -2,25 +2,11 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* nextTripSaga() {
-  yield takeEvery('GET_PROVIDER', getProviderSaga)
   yield takeEvery('GET_ROUTE', getRoute)
   yield takeEvery('GET_ROUTE_DIRECTION', getRouteDirection)
   yield takeEvery('GET_ROUTE_STOP', getRouteStop)
   yield takeEvery('GET_ROUTE_DEPARTURE', getRouteDeparture)
-}
-
-function* getProviderSaga(action) {
-  console.log('getProviderSaga triggered:', action);
-  try {
-    const providerResponse = yield call(axios.get, ' http://svc.metrotransit.org/NexTrip/Providers');
-    console.log(providerResponse);
-    yield put({
-      type: 'FETCH_PROVIDER',
-      payload: providerResponse.data,
-    })
-  } catch(error) {
-    console.log('error in getProviderSaga!', error);
-  }
+  yield takeEvery('GET_ROUTE_STOPID', getRouteStopID)
 }
 
 function* getRoute(action) {
@@ -78,6 +64,20 @@ function* getRouteDeparture(action) {
     })
   } catch(error) {
     console.log('error in getRouteDepartureSaga', error);
+  }
+}
+
+function* getRouteStopID(action) {
+  console.log('getRouteStopID triggered:', action);
+  try {
+    const routeStopID = yield call(axios.get, `http://svc.metrotransit.org/NexTrip/${action.payload}`);
+    console.log(routeStopID);
+    yield put({
+      type: 'FETCH_ROUTE_STOPID',
+      payload: routeStopID.data
+    })
+  } catch(error) {
+    console.log('error in getRouteStopID', error);
   }
 }
 

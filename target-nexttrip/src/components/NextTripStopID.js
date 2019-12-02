@@ -4,7 +4,7 @@ import Header from './Header';
 
 import moment from 'moment';
 
-class NextTripStops extends Component {
+class NextTripStopID extends Component {
 
   handleGoBack = (event) => {
     event.preventDefault();
@@ -12,17 +12,16 @@ class NextTripStops extends Component {
   }
 
   render() {
-    let currentRoute = this.props.state.nextTripInput.nextTrip.route;
-    let routeDepartureOptions = this.props.state.nextTripRouteDeparture.map(( departure ) => {
+    let routeStopID = this.props.state.nextTripStopID.map(( departure ) => {
       return (
         <div key={departure.DepartureTime} className={'nextTripStopsDataRow'}>
           <span className={'nextTripStopsRow1'}>
-            <a className={'routeLink'} href={`https://www.metrotransit.org/route/${currentRoute}`}>
+            <a className={'routeLink'} href={`https://www.metrotransit.org/route/${departure.Route}`}>
               {departure.Route}
             </a>
           </span>
           <span className={'nextTripStopsRow2'}>
-            <a className={'routeLink'} href={`https://www.metrotransit.org/route/${currentRoute}`}>
+            <a className={'routeLink'} href={`https://www.metrotransit.org/route/${departure.Route}`}>
               {departure.Description}
             </a>
           </span>
@@ -33,7 +32,7 @@ class NextTripStops extends Component {
       )
     })
 
-    let mostRecentDepartureTime = this.props.state.nextTripRouteDeparture[0].DepartureText
+    let mostRecentDepartureTime = this.props.state.nextTripStopID[0].DepartureText
 
     return (
       <div>
@@ -55,7 +54,7 @@ class NextTripStops extends Component {
           </span>
         </div>
         <div className={'nextTripStopsContainer'}>
-          {routeDepartureOptions}
+          {routeStopID}
         </div>
         <button className={'backToStopBtn'} onClick={this.handleGoBack}>
           BACK TO STOP
@@ -69,4 +68,4 @@ const mapStateToProps = state => ({
   state
 })
 
-export default connect(mapStateToProps)(NextTripStops);
+export default connect(mapStateToProps)(NextTripStopID);

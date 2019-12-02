@@ -8,8 +8,7 @@ class StopStation extends Component {
     onChange({ stopStation: event.target.value });
     setTimeout( () => {
       dispatch({ type: 'GET_ROUTE_DEPARTURE', payload: this.props.nextTripInput.nextTrip })
-    }, 2000);
-    // history.push('/stops')
+    }, 500);
   }
 
   render() {
@@ -24,7 +23,7 @@ class StopStation extends Component {
 
     return (
       <div className='inputSelectContainer'>
-        <select className='inputSelect' onChange={this.handleStopStationChange} onSubmit={this.props.handleSubmit} type={'submit'}>
+        <select className='inputSelect' onChange={this.handleStopStationChange}>
           <option>Select Stop/Station</option>
           {routeOptions}
         </select>
