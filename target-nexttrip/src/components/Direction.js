@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class Direction extends Component {
 
+  //handles input value for nextTripInput.direction
   handleDirectionChange = (event) => {
     const { onChange, dispatch } = this.props;
     onChange({ direction: event.target.value });
@@ -12,7 +13,7 @@ class Direction extends Component {
   }
 
   render() {
-
+    //loop through nextTripRouteDirection and return each index as an option element
     let routeDirection = this.props.nextTripRouteDirection.map(( direction ) => {
       console.log('this.props:', this.props);
       return (

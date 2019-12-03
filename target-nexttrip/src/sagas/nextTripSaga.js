@@ -8,7 +8,7 @@ function* nextTripSaga() {
   yield takeEvery('GET_ROUTE_DEPARTURE', getRouteDeparture)
   yield takeEvery('GET_ROUTE_STOPID', getRouteStopID)
 }
-
+// API call that returns available Metro Transit Routes
 function* getRoute(action) {
   console.log('getRouteSaga triggered:', action);
   try {
@@ -22,7 +22,7 @@ function* getRoute(action) {
     console.log('error in getRouteSaga!', error);
   }
 }
-
+// API call that returns available directions based on previously selected route
 function* getRouteDirection(action) {
   console.log('getRouteDirectionSaga triggered:', action);
   try {
@@ -36,7 +36,7 @@ function* getRouteDirection(action) {
     console.log('error in getRouteDirectionSaga', error);
   }
 }
-
+// API call that returns available stops and stations based on previously selected route and direction 
 function* getRouteStop(action) {
   console.log('getRouteStopSaga triggered:', action);
     try {
@@ -52,7 +52,7 @@ function* getRouteStop(action) {
     }
   
 }
-
+// API call that returns upcoming departure times base on previously selected route, direction, and stop/station
 function* getRouteDeparture(action) {
   console.log('getRouteDepature triggered:', action);
   try {
@@ -66,7 +66,7 @@ function* getRouteDeparture(action) {
     console.log('error in getRouteDepartureSaga', error);
   }
 }
-
+// API call that returns upcoming departure times based on stop ID input
 function* getRouteStopID(action) {
   console.log('getRouteStopID triggered:', action);
   try {

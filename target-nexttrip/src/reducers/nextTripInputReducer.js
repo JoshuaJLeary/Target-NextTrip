@@ -1,3 +1,4 @@
+// initialState for selector input
 const initalState = {
   nextTrip: {
     route: '',

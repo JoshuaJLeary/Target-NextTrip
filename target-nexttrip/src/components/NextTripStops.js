@@ -5,10 +5,17 @@ import Header from './Header';
 import moment from 'moment';
 
 class NextTripStops extends Component {
-
+  // onClick takes user back to NextTrip.js
   handleGoBack = (event) => {
     event.preventDefault();
     this.props.history.push('/');
+  }
+
+  componentDidMount() {
+    if(!this.props.state.nextTripRouteDeparture) {
+      console.log('nextTripRouteDeparture', this.props.state.nextTripRouteDeparture);
+      this.props.history.push('/');
+    }
   }
 
   render() {
@@ -32,7 +39,7 @@ class NextTripStops extends Component {
         </div>
       )
     })
-
+    // captures most recent departure time for first index of nextTripRouteDeparture
     let mostRecentDepartureTime = this.props.state.nextTripRouteDeparture[0].DepartureText
 
     return (

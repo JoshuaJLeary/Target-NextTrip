@@ -8,26 +8,27 @@ import StopStation from './StopStation';
 
 class NextTrip extends Component {
 
+  // loads available routes on page load
   componentDidMount() {
     this.props.dispatch({ type: 'GET_ROUTE' })
   }
-
+  // handles input data from Route.js, Direction.js, and StopStation.js and saves it to nextTripInputReducer
   handleInputUpdate = (value) => {
     const { dispatch } = this.props;
     console.log('inputValue:', value);
     dispatch({ type: 'HANDLE_INPUT_UPDATE', value });
   }
-
+  // captures value of stopID input and dispatches value to saga for stopID API call 
   handleRouteStopIDChange = (event) => {
     const { dispatch } = this.props;
     dispatch({ type: 'GET_ROUTE_STOPID', payload: event.target.value });
   }
-
+  // onClick submits nextTripInput data to saga for stopStation API call
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.history.push('/stops');
   }
-
+  // onClick pushs to NextTripStopID page and displays departure times based on stopID input value
   handleStopIDSubmit = (event) => {
     event.preventDefault();
     this.props.history.push('/stopID')
@@ -59,7 +60,7 @@ class NextTrip extends Component {
         </button>
         <hr className='dividerLine' />
         <div className='inputStopNumberContainer'>
-          <input className='inputStopNumber' type='text' onChange={this.handleRouteStopIDChange}>
+          <input className='inputStopNumber' type='text' onSubmit={this.handleRouteStopIDChange}>
           </input>
         </div>
         <div className='inputStopNumberContainer'>

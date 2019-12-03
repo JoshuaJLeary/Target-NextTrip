@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Route extends Component {
-
+  // handles input value for nextTripInput.route
   handleRouteChange = (event) => {
     const { onChange, dispatch } = this.props;
     onChange({ route: event.target.value });
@@ -10,7 +10,7 @@ class Route extends Component {
   }
 
   render() {
-
+    // loop through nextTripRoute and return each index as an option element
     let routeOptions = this.props.nextTripRoute.map(( route ) => {
       return (
         <option key={route.Route} value={route.Route}>
