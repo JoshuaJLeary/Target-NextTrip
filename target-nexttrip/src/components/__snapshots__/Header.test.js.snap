@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="headerContainer"
+  data-testid="header"
+>
+  <div
+    id="metroImgContainer"
+  >
+    <img
+      alt="metroTransitLogo"
+      className="metroImg"
+      src="https://www.metrotransit.org/images/mob_logo.png"
+    />
+  </div>
+  <div
+    id="metroImgBannerContainer"
+  >
+    <img
+      alt="metroTransitBanner"
+      className="metroImgBanner"
+      src="https://www.metrotransit.org/images/mob_banner.png"
+    />
+  </div>
+</div>
+`;

@@ -15,7 +15,6 @@ class Direction extends Component {
   render() {
     //loop through nextTripRouteDirection and return each index as an option element
     let routeDirection = this.props.nextTripRouteDirection.map(( direction ) => {
-      console.log('this.props:', this.props);
       return (
         <option key={direction.Value} value={direction.Value}>
           {direction.Text}
@@ -24,7 +23,7 @@ class Direction extends Component {
     })
 
     return (
-      <div className='inputSelectContainer'>
+      <div data-testid={'direction'} className='inputSelectContainer'>
         <select className='inputSelect' onChange={this.handleDirectionChange}>
           <option>Select Direction</option>
           {routeDirection}

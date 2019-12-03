@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="inputSelectContainer"
+  data-testid="direction"
+>
+  <select
+    className="inputSelect"
+    onChange={[Function]}
+  >
+    <option>
+      Select Direction
+    </option>
+    <option
+      value="2"
+    >
+      EASTBOUND
+    </option>
+  </select>
+</div>
+`;

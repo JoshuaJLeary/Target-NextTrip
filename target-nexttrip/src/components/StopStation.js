@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class StopStation extends Component {
-   // handles input value for nextTripInput.stopStation
+  // handles input value for nextTripInput.stopStation
   handleStopStationChange = (event) => {
     const { onChange, dispatch } = this.props;
     onChange({ stopStation: event.target.value });
@@ -22,7 +22,7 @@ class StopStation extends Component {
     })
 
     return (
-      <div className='inputSelectContainer'>
+      <div data-testid={'stopStation'} className='inputSelectContainer'>
         <select className='inputSelect' onChange={this.handleStopStationChange}>
           <option>Select Stop/Station</option>
           {routeOptions}

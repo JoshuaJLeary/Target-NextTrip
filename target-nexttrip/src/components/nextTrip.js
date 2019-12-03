@@ -15,7 +15,6 @@ class NextTrip extends Component {
   // handles input data from Route.js, Direction.js, and StopStation.js and saves it to nextTripInputReducer
   handleInputUpdate = (value) => {
     const { dispatch } = this.props;
-    console.log('inputValue:', value);
     dispatch({ type: 'HANDLE_INPUT_UPDATE', value });
   }
   // captures value of stopID input and dispatches value to saga for stopID API call 
@@ -35,8 +34,7 @@ class NextTrip extends Component {
   }
 
   render() {
-    console.log('departureState', this.props.state.nextTripRouteDeparture)
-    console.log('this.props.history', this.props.history)
+
     return (
       <form className='headerContainer'>
         <Header />

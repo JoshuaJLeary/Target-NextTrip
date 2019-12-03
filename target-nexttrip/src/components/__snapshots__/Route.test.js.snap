@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="inputSelectContainer"
+  data-testid="route"
+>
+  <select
+    className="inputSelect"
+    onChange={[Function]}
+  >
+    <option>
+      Select Route
+    </option>
+    <option
+      value="902"
+    >
+      METRO Green Line
+    </option>
+  </select>
+</div>
+`;

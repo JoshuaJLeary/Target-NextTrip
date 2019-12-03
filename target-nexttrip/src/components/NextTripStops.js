@@ -11,13 +11,6 @@ class NextTripStops extends Component {
     this.props.history.push('/');
   }
 
-  componentDidMount() {
-    if(!this.props.state.nextTripRouteDeparture) {
-      console.log('nextTripRouteDeparture', this.props.state.nextTripRouteDeparture);
-      this.props.history.push('/');
-    }
-  }
-
   render() {
     let currentRoute = this.props.state.nextTripInput.nextTrip.route;
     let routeDepartureOptions = this.props.state.nextTripRouteDeparture.map(( departure ) => {

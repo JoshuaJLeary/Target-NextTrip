@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="inputSelectContainer"
+  data-testid="stopStation"
+>
+  <select
+    className="inputSelect"
+    onChange={[Function]}
+  >
+    <option>
+      Select Stop/Station
+    </option>
+    <option
+      value="TF12"
+    >
+      Target Field Station Platform 1
+    </option>
+  </select>
+</div>
+`;

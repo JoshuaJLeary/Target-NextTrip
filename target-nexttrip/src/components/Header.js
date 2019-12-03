@@ -4,7 +4,7 @@ class Header extends Component {
   render() {
     return (
       //this header contains the Metro Transit image and image banner
-      <div className='headerContainer'>
+      <div data-testid={'header'} className='headerContainer'>
           <div id='metroImgContainer'>
             <img src='https://www.metrotransit.org/images/mob_logo.png' className='metroImg' alt='metroTransitLogo' />
           </div>

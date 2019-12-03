@@ -20,7 +20,7 @@ class Route extends Component {
     })
 
     return (
-      <div className='inputSelectContainer'>
+      <div data-testid={'route'} className='inputSelectContainer'>
         <select className='inputSelect' onChange={this.handleRouteChange}>
           <option>Select Route</option>
           {routeOptions}
