@@ -1,5 +1,5 @@
 # Joshua Leary Target NexTrip Application
-This application allows users to view upcoming available Metro Transit Transportaion<br>based on route, direction, and station selections.</br>
+This application allows users to view upcoming available Metro Transit Transportation<br>based on route, direction, and station selections.</br>
 
 ## Installation
 
@@ -29,6 +29,20 @@ The following list of assumptions must be satisfied for the application to be su
 * Google Chrome
 
 * Google Chrome Extention [Moesif CORS](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US)
+
+## Technology
+
+* React v16.0
+
+* React Redux v7.1
+
+* React Router DOM v5.1.2
+
+* React Saga v1.1.3
+
+* Axios v0.19
+
+* Moment v2.24
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
